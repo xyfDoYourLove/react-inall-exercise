@@ -7,9 +7,10 @@
     "start": "parcel index.html"
   },
   "dependencies": {
+    "antd": "^4.5.4",
     "bootstrap": "^4.5.2",
-    "react": ">=15",
-    "react-dom": "^16.8.6",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0",
     "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
