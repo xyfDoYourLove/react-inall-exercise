@@ -21,14 +21,14 @@ class Timer extends React.Component {
         }
 
         this.start = () => {
-            this.setState({time: 'START'})
+            this.setState({time: '开始'})
             setTimeout(() => {
                 this.setState({time: this.state.input})
                 const timer = setInterval(() => {
                     this.setState({time: String(this.state.time - 1)})
-                    if (this.state.time === '0') {
+                    if (this.state.time <= 0) {
                         clearInterval(timer)
-                        this.setState({time: 'END'})
+                        this.setState({time: '结束'})
                     }
                 }, 1000)
             }, 1000)
@@ -40,22 +40,25 @@ class Timer extends React.Component {
         return (
             <div>
                 <div style={{width: '30%', margin: 'auto'}}>
-                    <Row justify={'center'}>
-                        <Col span={24}>
-                            <InfoDisplayer info={this.state.time} placeholder={'please start a timer'} />
-                        </Col>
-                    </Row>
-                    <Row justify={'center'}>
-                        <Col span={8}>
-                            <Button type={'primary'} onClick={this.start}>S T A R T</Button>
-                        </Col>
-                        <Col span={8}>
-                            <Input value={this.state.input} placeholder='enter seconds.' onChange={this.handleInputChange} />
-                        </Col>
-                        <Col span={8}>
-                            <Link to={'/'}><Button type={'danger'}>B A C K</Button></Link>
-                        </Col>
-                    </Row>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td><InfoDisplayer info={this.state.time} placeholder={'输入要倒计时的总时间'} /></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><Button type={'primary'} onClick={this.start}>开始</Button></td>
+                                <td><Input value={this.state.input} placeholder='enter seconds.' onChange={this.handleInputChange} /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><Link to={'/'}><Button type={'danger'}>返回主页</Button></Link></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );

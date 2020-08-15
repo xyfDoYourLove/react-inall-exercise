@@ -68,7 +68,7 @@ class Calculator extends React.Component{
 
   render() {
     return (<div className="calculator">
-    This is calculator page
+    计算器
     <table>
       <thead>
         <tr>
